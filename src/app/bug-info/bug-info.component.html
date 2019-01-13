@@ -1,0 +1,48 @@
+
+<form #userForm="ngForm">
+<div class="row">
+        <div class="col-xs-12 col-12 col-sm-3 col-md-3 col-lg-2 form-group">
+          <select
+            class="custom-select form-control "
+            [(ngModel)]="locale" (ngModelChange)="applyLocale(dp);">
+            <option *ngFor="let loc of locales" [value]="loc">{{ loc }}</option>
+          </select>
+        </div>
+        <div class="col-xs-12 col-12 col-sm-5 col-md-6 col-lg-4 form-group">
+          <input placeholder="Datepicker" type="text" class="form-control" bsDatepicker #dp="bsDatepicker" name="datepicker" [(ngModel)]="userModel.datepicker">
+        </div>
+        <div class="col-xs-12 col-12 col-sm-4 col-md-12 col-lg-4 form-group">
+          <input type="button"
+                 class="btn btn-success"
+                 value="Date Picker"
+                 (click)="dp.show()" />
+        </div>
+      </div>
+      {{userForm.value | json}}
+
+        <hr />
+        {{userModel | json}}
+     
+     
+      <div class="form-group">
+                <p>Impact</p>
+                
+                  <select class="form-control" name="impact" [(ngModel)]="userModel.impact">
+                    <option selected>low</option>
+                    <option value="high">high</option>
+                    <option value="medium">medium</option>
+                  </select>
+                 
+              
+              </div>
+              
+          <div class="form-group">
+             
+          <label for="inputsm">Detailed explanation of bug*</label>
+          <input class="form-control form-control-lg" id="inputsm" type="text" name="bugInfo" [(ngModel)]="userModel.bugInfo">
+        
+        </div>
+</form>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
